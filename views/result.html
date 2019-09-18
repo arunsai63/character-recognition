@@ -1,0 +1,143 @@
+<html>
+  <head>
+    <title>Character Recognition</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <style>
+      body {
+        margin: 0;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: black;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-family: "Lato", sans-serif;
+      }
+
+      li a:hover {
+        background-color: white;
+        color: black;
+      }
+
+      #heading,
+      #about {
+        font-family: "Raleway", sans-serif;
+        color: black;
+      }
+
+      #div2 {
+        font-family: "Raleway", sans-serif;
+      }
+
+      a {
+        color: black
+      }
+
+      #hand {
+        margin-right: 20px;
+      }
+
+      #div1 {
+        background-color: white;
+        width: 98.5%;
+
+      }
+
+      .b1 {
+        background-color: rgb(235, 234, 237);
+        padding: 10px 12px;
+        border: none;
+        color: black;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .b1:hover {
+        background-color: #000000;
+        color: white;
+      }
+
+      #webpage {
+        cursor: pointer
+      }
+
+      #result_here {
+        font-family: "Lato", sans-serif;
+      }
+
+      @media only screen and (max-width: 500px) {
+        body {
+          margin: 0;
+        }
+        #div1 {
+          background-color: #111;
+          width: 93.5%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <nav id="top" style="position: fixed; width:100%;">
+
+        <ul>
+          <li id="home">
+            <a href="/page">HOME</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div id="div1" style="padding:5px 10px;text-align: center;">
+      <h6 id="heading">Result Page</h6>
+      <h1 id="result_here">YOUR RESULT IS HERE</h1>
+    </div>
+
+    <center>
+      <p style="font-size: 85px;margin-top: 0;margin-bottom: 0;display: inline;">{{res[0]}}</p>
+      <p style="display: inline;font-size: 12px;">frequency:{{res[1]}}</p>
+    </center>
+    
+    <details>
+      <summary style="text-align:center;">If result goes wrong</summary>
+      <p style="font-size:68px; margin-left:450px;margin-top: 0;margin-bottom: 0;display: inline;">{{res[2]}}</p>
+      <p style="display: inline;font-size: 12px;">frequency:{{res[3]}}</p>
+      <p style="font-size:68px; margin-left:150px;margin-top: 0;margin-bottom: 0;display: inline;">{{res[4]}}</p>
+      <p style="display: inline;font-size: 12px;">frequency:{{res[5]}}</p>
+    </details>
+
+    <div id="retry">
+      <center>
+        <p>
+          <h1 id="heading" style="font-size: 48px;">THANK YOU</h1>
+          <form action="/page" method="get">
+            <button type="submit" class="b1"> Try Again </button>
+          </form>
+        </p>
+      </center>
+    </div>
+
+  </body>
+</html>

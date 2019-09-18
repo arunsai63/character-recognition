@@ -1,0 +1,283 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Recognition</title>
+    <style>
+      .top-nav {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #111;
+      }
+
+      .top-nav a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-family: "Lato", sans-serif;
+        float: left;
+      }
+
+      .top-nav a:hover {
+        background-color: #000;
+      }
+
+      .recog {
+        background-color: white;
+        border: 2px solid black;
+        color: black;
+        padding: 6px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 12px;
+      }
+
+      .recog:hover {
+        background-color: black;
+        color: white;
+      }
+
+      .images {
+        background: black;
+        width: auto;
+        height: auto;
+      }
+
+      header {
+        background-color: white;
+        width: 98.5%;
+      }
+
+      #heading,
+      #p1 {
+        font-family: "Lato", sans-serif;
+        color: black;
+      }
+
+      #para1 {
+        font-family: "Raleway", sans-serif;
+        line-height: 140%;
+        margin-left: 22px;
+        width: 95%;
+        color: black;
+        text-align: center;
+        background-color: dark-grey;
+      }
+
+      #downimages {
+        font-family: "Lato", sans-serif;
+        line-height: 140%;
+        width: 60%;
+        color: dark-grey;
+        width: 98.5%;
+        padding: 5px 10px;
+      }
+
+      .browse {
+        background-color: white;
+        color: black;
+        padding: 4px 6px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 12px;
+      }
+
+      .browse:hover {
+        background-color: black;
+        color: white;
+      }
+
+      a {
+        color: white;
+      }
+    </style>
+    <script>
+      function getValue(source){
+        var k2 = document.getElementById("k2");
+        var train_samples2 = document.getElementById("train_samples2");
+        window.location("/button/" + source + '/' + k2 + '/' + train_samples2)
+      }
+    </script>
+  </head>
+
+  <body style="margin: 0%;" background-color="black">
+    <div class="top-nav">
+      <a href="/">HOME</a>
+    </div>
+
+    <header style="padding:1px">
+      <center>
+        <h1 id="heading">HANDWRITTEN CHARACTER RECOGNITION</h1>
+      </center>
+    </header>
+
+    <div background-color="black">
+      <p id="para1">is based on Machine Learning using k Neareset Neighbours algorithm. So You can test results by changing the values of
+        the variables used in this alogirithm. (You can give value between
+        <b>1 to 60000</b>)
+        <br>
+        <b>K :</b> No. of nearest neighbours. (values
+        <b>40 to 100</b> will give best results)
+        <br>
+        <b>Training sets :</b> No. of training samples algorithm should be trained.
+        <br>(Higher the value of this will give best result)
+        <br>
+      </p>
+    </div>
+
+    <center>
+      <form action="/recognise" method="post" enctype="multipart/form-data">
+        <img id="upload" width="200" height="200" style="display: none"/>
+        <br>
+        <br>
+        <input class="browse" type="file" name="upload" accept="image/*" onchange="document.getElementById('upload').src = window.URL.createObjectURL(this.files[0]); document.getElementById('upload').style.display='block'">
+        <br>
+        <br> K :
+        <input type="number" name="k1" placeholder="Default value=60" step="10" min="20" max="60000"> &nbsp;&nbsp; &nbsp; &nbsp; Training sets :
+        <input type="number" name="train_samples1" placeholder="Default value=60000"
+          step="100" min="100" max="60000">
+        <br>
+        <br>
+        <input class="recog" type="submit" value="Recognise" style="margin:10px; cursor:pointer;">
+      </form>
+
+      <div id="downimages">
+        This algorithm will process images in 28x28 pixels. Sometimes it may go wrong while shrinking the image size to 28x28 pixels.
+        <br> Hence we have provided the following 30 images(size:28x28) which will generated from 3000 images randomly.
+      </div>
+    </center>
+
+    <br>
+
+    <div background-color="black">
+      <center>
+        <form action="/button/<num>" method="post" enctype="multipart/form-data">
+          K :
+          <input type="number" name="k2" placeholder="Default value=60" step="10" min="20" max="60000"> &nbsp;&nbsp; &nbsp; &nbsp; Training sets :
+          <input type="number" name="train_samples2" placeholder="Default value=60000"
+            step="100" min="100" max="60000">
+          <br>
+          <br>
+          <br>
+          <div class="row">
+            <a href="/button/{{a[0]}}">
+              <img src="static/{{a[0]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[1]}}">
+              <img src="static/{{a[1]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[2]}}">
+              <img src="static/{{a[2]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[3]}}">
+              <img src="static/{{a[3]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[4]}}">
+              <img src="static/{{a[4]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[5]}}">
+              <img src="static/{{a[5]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+          </div>
+
+          <div class="row">
+            <a href="/button/{{a[6]}}">
+              <img src="static/{{a[6]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[7]}}">
+              <img src="static/{{a[7]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[8]}}">
+              <img src="static/{{a[8]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[9]}}">
+              <img src="static/{{a[9]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[10]}}">
+              <img src="static/{{a[10]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[11]}}">
+              <img src="static/{{a[11]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+          </div>
+
+          <div class="row">
+            <a href="/button/{{a[12]}}">
+              <img src="static/{{a[12]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[13]}}">
+              <img src="static/{{a[13]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[14]}}">
+              <img src="static/{{a[14]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[15]}}">
+              <img src="static/{{a[15]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[16]}}">
+              <img src="static/{{a[16]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[17]}}">
+              <img src="static/{{a[17]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+          </div>
+
+          <div class="row">
+            <a href="/button/{{a[18]}}">
+              <img src="static/{{a[18]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[19]}}">
+              <img src="static/{{a[19]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[20]}}">
+              <img src="static/{{a[20]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[21]}}">
+              <img src="static/{{a[21]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[22]}}">
+              <img src="static/{{a[22]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[23]}}">
+              <img src="static/{{a[23]}}" alt="Some image" height="50" width="50" style="float: center;  ">
+            </a>
+          </div>
+
+          <div class="row">
+            <a href="/button/{{a[24]}}">
+              <img src="static/{{a[24]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[25]}}">
+              <img src="static/{{a[25]}}" alt="Some image" height="50" width="50" style="float: center; ">
+            </a>
+            <a href="/button/{{a[26]}}">
+              <img src="static/{{a[26]}}" alt="Some image" height="50" width="50" style="float: center;">
+            </a>
+            <a href="/button/{{a[27]}}">
+              <img src="static/{{a[27]}}" alt="Some image" height="50" width="50" style="float: center;">
+            </a>
+            <a href="/button/{{a[28]}}">
+              <img src="static/{{a[28]}}" alt="Some image" height="50" width="50" style="float: center;">
+            </a>
+            <a href="/button/{{a[29]}}">
+              <img src="static/{{a[29]}}" alt="Some image" height="50" width="50" style="float:center;">
+            </a>
+          </div>
+        </form>
+      </center>
+    </div>
+    
+  </body>
+</html>
